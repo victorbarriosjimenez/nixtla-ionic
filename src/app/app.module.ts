@@ -20,8 +20,10 @@ import { BranchesService } from '../services/branch.service';
 import { BranchDetailsComponent } from '../components/branch-details/branch-details';
 import { ComponentsModule } from '../components/components.module';
 import { Geolocation } from '@ionic-native/geolocation';
-import { AgmCoreModule } from '@agm/core';
 import { MapDetailsPage } from '../pages/map-details/map-details';
+import { MapDetailsPageModule } from '../pages/map-details/map-details.module';
+
+import { AgmCoreModule } from '@agm/core';
 
 
 const firebaseConfig = {
@@ -36,8 +38,7 @@ const firebaseConfig = {
   declarations: [
     MyApp,
     LoginPage,
-    HomePage,
-    MapDetailsPage
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -51,14 +52,14 @@ const firebaseConfig = {
     AngularFireStorageModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC0gcAwwnMoOl-2HuX00wKb-uXAoUoE8qU'
-    })
+    }),
+    MapDetailsPageModule   
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage,
-    MapDetailsPage
+    HomePage
   ],
   providers: [
     StatusBar,

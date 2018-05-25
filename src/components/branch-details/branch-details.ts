@@ -4,7 +4,6 @@ import { BranchesService } from '../../services/branch.service';
 import { Observable } from 'rxjs/Observable'
 import { NavController } from 'ionic-angular';
 import { MapDetailsPage } from '../../pages/map-details/map-details';
-
 @Component({
   selector: 'branch-details',
   templateUrl: 'branch-details.html'
@@ -22,6 +21,12 @@ export class BranchDetailsComponent implements OnInit {
         .subscribe(branch => this.branch = branch);
   }
   goToMapBranchLocation(){
-     this.navCtrl.push(MapDetailsPage);
+     this.navCtrl.push(MapDetailsPage,
+      {
+        coordinates: {
+          lat: this.branch.coorditatesLat,
+          lng: this.branch.coordinatesLng
+        }
+    });
   }
 }
