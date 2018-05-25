@@ -12,6 +12,7 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.3",
     "@angular/common": "5.0.3",
     "@angular/compiler": "5.0.3",
     "@angular/compiler-cli": "5.0.3",
@@ -24,6 +25,7 @@
     "@ionic-native/camera": "^4.5.2",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/file": "^4.5.2",
+    "@ionic-native/geolocation": "^4.7.0",
     "@ionic-native/google-plus": "^4.5.2",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/status-bar": "4.4.0",
@@ -34,6 +36,7 @@
     "cordova-plugin-camera": "^4.0.1",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-file": "^6.0.1",
+    "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-googleplus": "^5.2.1",
     "cordova-plugin-ionic-webview": "^1.1.16",
     "cordova-plugin-splashscreen": "^4.0.3",
@@ -65,7 +68,8 @@
         "REVERSED_CLIENT_ID": "com.googleusercontent.apps.581326886241-5lsag275or4pjmtkirmh57ld4kbddeie"
       },
       "cordova-plugin-file": {},
-      "cordova-plugin-camera": {}
+      "cordova-plugin-camera": {},
+      "cordova-plugin-geolocation": {}
     },
     "platforms": [
       "android"
