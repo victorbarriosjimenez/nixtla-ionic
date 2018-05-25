@@ -20,6 +20,9 @@ import { BranchesService } from '../services/branch.service';
 import { BranchDetailsComponent } from '../components/branch-details/branch-details';
 import { ComponentsModule } from '../components/components.module';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AgmCoreModule } from '@agm/core';
+import { MapDetailsPage } from '../pages/map-details/map-details';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyC3aXDPdYwKnONsrSgomSwJMr_J6XYU-DU",
@@ -29,12 +32,12 @@ const firebaseConfig = {
   storageBucket: "angular-fb-fd544.appspot.com",
   messagingSenderId: "281618586800"
 }
-
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
-    HomePage
+    HomePage,
+    MapDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -45,13 +48,17 @@ const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC0gcAwwnMoOl-2HuX00wKb-uXAoUoE8qU'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage
+    HomePage,
+    MapDetailsPage
   ],
   providers: [
     StatusBar,
