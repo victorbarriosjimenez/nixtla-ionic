@@ -1,0 +1,22 @@
+$font-family-base: "lemonmilkbold", sans-serif !default;
+.login-start { 
+    background-color: rgb(0, 59, 253);    
+}
+ion-item {
+    margin-bottom: 100px;
+}
+.center {
+    text-align: center;
+}
+h1, h5 {
+    color: aliceblue;
+}
+h1 {
+    font-family: "lemonmilkbold" !important;
+    font-size: 2.5em;
+    margin: 200px auto 0px auto;
+}
+h5 {
+    font-family: "Noto Sans" !important;
+    margin: -2px auto 25px auto;  
+}
