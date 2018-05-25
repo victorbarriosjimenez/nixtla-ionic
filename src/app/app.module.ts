@@ -19,6 +19,8 @@ import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { BranchesService } from '../services/branch.service';
 import { BranchDetailsComponent } from '../components/branch-details/branch-details';
 import { ComponentsModule } from '../components/components.module';
+import { Geolocation } from '@ionic-native/geolocation';
+
 const firebaseConfig = {
   apiKey: "AIzaSyC3aXDPdYwKnONsrSgomSwJMr_J6XYU-DU",
   authDomain: "angular-fb-fd544.firebaseapp.com",
@@ -55,6 +57,7 @@ const firebaseConfig = {
     StatusBar,
     AngularFireAuth,
     AuthService,
+    Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
