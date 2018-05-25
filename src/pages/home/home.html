@@ -7,11 +7,11 @@
     </ion-navbar>
   </ion-header>
 <ion-content padding>
-    <ion-row *ngFor="let post of posts | async">
+    <ion-row *ngFor="let event of events | async">
         <ion-card>
           <ion-card-content>
             <ion-icon></ion-icon>
-             <branch-details [branch-data]="post.branch"></branch-details>
+             <branch-details [branch-data]="event.branch"></branch-details>
           </ion-card-content>
         </ion-card>
     </ion-row>

@@ -1,3 +1,13 @@
 <div>
-    {{ branch | json }}
+    <ion-card>
+        <img [src]="branch.image"/>
+        <ion-card-content>
+          <ion-card-title>
+             {{ branch.name }}
+            </ion-card-title>
+          <p>
+            {{ branch.description }}
+          </p>
+        </ion-card-content>
+    </ion-card>
 </div>
