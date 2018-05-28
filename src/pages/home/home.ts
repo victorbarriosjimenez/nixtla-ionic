@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { WorkdayPage } from '../workday/workday';
 import { AuthService } from '../../services/auth.service';
 import { EventsService } from '../../services/events.service';
-
+import * as moment from 'moment'; 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -20,7 +20,7 @@ export class HomePage {
               private _eventsService: EventsService,
               nav: Nav) {
     this.nav = nav;
-    this.events = this.db.collection('events', ref => ref.where('promoter','==','21O1jJ8owad1VzPD18XZhEu9JFJ3')).valueChanges();
+    this.events = this.db.collection('events', ref => ref.where('promoter','==',this.auth.authUid)).valueChanges();
   }
   public navigateToWorkday() {
     this.navCtrl.push(WorkdayPage);
