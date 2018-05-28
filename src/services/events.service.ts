@@ -5,12 +5,11 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import AuthProvider = firebase.auth.AuthProvider;
 import { AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Event } from '../models/events';
+import { Observable } from 'rxjs/Observable'; 
 import 'rxjs/add/operator/map';
+import { AuthService } from './auth.service';
 @Injectable()
 export class EventsService {
-    public eventsUserReference;
-	constructor(private afs: AngularFirestore) { }
-    public getPromoterEvents(uid: string){
-        this.eventsUserReference = this.afs.collection('events', ref => ref.where('promoter','==',uid)).valueChanges();
-    }
+	constructor(private afs: AngularFirestore,
+				private auth: AuthService) { }
 }
