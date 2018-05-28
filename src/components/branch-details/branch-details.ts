@@ -41,8 +41,10 @@ export class BranchDetailsComponent implements OnInit {
         this.navCtrl.push(WorkdayPage,
           {
             promoter: this.event.promoter,
-            branchLat: this.branch.coordinatesLat,
-            branchLng: this.branch.coordinatesLng
+            coordinates: {
+              lat: this.branch.coordinatesLat,
+              lng: this.branch.coordinatesLng
+            }
           } 
         );
     }

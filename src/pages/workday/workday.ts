@@ -10,14 +10,19 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class WorkdayPage {
   workday: string = "regular";
   public isUserLocated: boolean = false;
+  public promoter: string;
   public userLocationLat: number = 0;
   public userLocationLng: number = 0;
-  public branchLocationLat: number = 0;
-  public branchLocationLng: number = 0;
+  public branchLocation;
   constructor(public navCtrl: NavController,
               public geolocation: Geolocation,
               public navParams: NavParams) { }
-  ionViewDidLoad() {   }
+  ionViewDidLoad() { 
+    this.promoter = this.navParams.get('promoter');
+    this.branchLocation = this.navParams.get('coordinates');
+    console.log(this.promoter);
+    console.log(this.branchLocation);
+  }
   public getLocation(): void {
     this.geolocation.getCurrentPosition().then(
       position => {
@@ -31,14 +36,14 @@ export class WorkdayPage {
   }
   public compareLocationDistanceFromEvent() {
     var R = 6378137; 
-    var dLat = this.rad(this.userLocationLat - this.branchLocationLat)
-    var dLong = this.rad(this.userLocationLng - this.branchLocationLng)
+    var dLat = this.rad(this.userLocationLat - this.branchLocation.lat)
+    var dLong = this.rad(this.userLocationLng - this.branchLocation.lng)
     var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-         Math.cos(this.rad(this.branchLocationLat)) * Math.cos(this.rad(this.userLocationLat)) *
+         Math.cos(this.rad(this.branchLocation.lat)) * Math.cos(this.rad(this.userLocationLat)) *
       Math.sin(dLong / 2) * Math.sin(dLong / 2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c;
-     return d/1000; 
+    return d/1000; 
   }
   private rad(x): number {
     return x * Math.PI / 180;
