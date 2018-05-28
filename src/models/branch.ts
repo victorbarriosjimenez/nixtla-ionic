@@ -23,6 +23,6 @@ export interface Branch {
     details?: string;
     image?: string;
     extraHours?: number;
-    coorditatesLat?: number;
+    coordinatesLat?: number;
     coordinatesLng?: number;
 }

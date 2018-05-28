@@ -6,16 +6,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'map-details.html',
 })
 export class MapDetailsPage {
-  public origin: any;
-  public markerLocation: any;
-	public zoom: number;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.markerLocation =  this.navParams.get('coordinates');
-    this.origin = {
-			lat: 19.5015841,
-			lng: -99.4042516
-		};
-		this.zoom = 8;
+  public lat: number = 19.5015841;
+  public lng: number = -99.4042516;
+  public zoom = 17; 
+  public name: string;
+  public mlat;
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  ionViewDidLoad() { 
+    this.mlat = this.navParams.get('coordinates');    
   }
-  ionViewDidLoad() { }
 }

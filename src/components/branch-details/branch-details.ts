@@ -23,10 +23,10 @@ export class BranchDetailsComponent implements OnInit {
   goToMapBranchLocation(){
      this.navCtrl.push(MapDetailsPage,
       {
-        coordinates: {
-          lat: this.branch.coorditatesLat,
-          lng: this.branch.coordinatesLng
-        }
+      coordinates: {
+        lat: this.branch.coordinatesLat,
+        lng: this.branch.coordinatesLng
+      }
     });
   }
 }
