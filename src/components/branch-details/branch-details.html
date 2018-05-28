@@ -23,9 +23,13 @@
         <p> 
             <ion-icon name="ios-navigate"></ion-icon> {{ branch.address1 }}, {{ branch.address2 }}
         </p>
-        <!--<ion-item>
-            <ion-icon name="ios-calendar-outline" item-start large></ion-icon>
+        <ion-item>
+            <ion-icon name="ios-alarm-outline" item-start large></ion-icon>
             <h2>Inició el {{ event.eventDateBegin | date: 'shortDate' }}</h2>
-        </ion-item>-->
+        </ion-item>
+        <ion-item>
+                <ion-icon name="ios-alarm" item-start large></ion-icon>
+                <h2>Inició el {{ event.eventDateBegin | date: 'shortDate' }}</h2>
+        </ion-item>
     </ion-card-content>
 </div>
