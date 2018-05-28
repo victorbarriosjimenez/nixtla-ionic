@@ -1,18 +1,52 @@
-<!--
-  Generated template for the WorkdayPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>workday</ion-title>
+    <ion-title>Registar Jornada</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
+    <div padding>
+        <ion-segment [(ngModel)]="workday">
+          <ion-segment-button value="regular">
+            Jornada
+          </ion-segment-button>
+          <ion-segment-button value="holiday">
+            Día Feriado
+          </ion-segment-button>
+          <ion-segment-button value="absent">
+            Inasistencia
+          </ion-segment-button>
+        </ion-segment>
+      </div>  
+    <div [ngSwitch]="workday">
+        <ion-list *ngSwitchCase="'regular'">
+                <ion-item>
+                    <ion-label>Registar hora de entrada</ion-label>
+                    <ion-toggle checked="false"></ion-toggle>
+                </ion-item>
+                <ion-item>
+                  <ion-label>
+                    <ion-icon name="ios-information-circle-outline"></ion-icon> La hora de entrada es a las 8:00 AM
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Hora de salida</ion-label>
+                    <ion-toggle disabled checked="false"></ion-toggle>
+                </ion-item>
+                <ion-item>
+                  <ion-label disabled>
+                      <ion-icon name="ios-information-circle-outline"></ion-icon> La hora de salida es a las 18:00 PM
+                  </ion-label>
+                </ion-item>
+                <button disabled color="primary" (click)="navigateToWorkday()" text-center full ion-button>
+                    Enviar Información
+                </button>   
+        </ion-list>
+        <ion-list *ngSwitchCase="'holiday'">
+                <p> <strong> Días feriados </strong></p>
+                <p>Selecciona un día feriado en el año laboral de esta sucursal</p>
+        </ion-list>
+        <ion-list *ngSwitchCase="'absent'">
+                <p>Quiero registrar una ausencia</p>
+        </ion-list>
+      </div>
 </ion-content>

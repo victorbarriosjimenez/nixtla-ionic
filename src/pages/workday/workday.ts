@@ -1,25 +1,28 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the WorkdayPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { Geolocation } from '@ionic-native/geolocation';
 @IonicPage()
 @Component({
   selector: 'page-workday',
   templateUrl: 'workday.html',
 })
 export class WorkdayPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
+  workday: string = "regular";
+  public isUserLocated: boolean = false;
+  public userLocationLat: number = 0;
+  public userLocationLng: number = 0;
+  constructor(public navCtrl: NavController,
+              public geolocation: Geolocation,
+              public navParams: NavParams) { }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WorkdayPage');
+     /* this.geolocation.getCurrentPosition().then(
+        position => {
+            this.isUserLocated = true;
+            this.userLocationLat = position.coords.latitude;
+            this.userLocationLng = position.coords.longitude;
+        },
+        err => { 
+            console.log("No se pudo localizar este dispositivo.")
+        });*/
   }
-
 }
