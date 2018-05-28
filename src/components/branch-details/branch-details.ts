@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable'
 import { NavController } from 'ionic-angular';
 import { MapDetailsPage } from '../../pages/map-details/map-details';
 import { Event } from '../../models/events';
-import { WorkdayPage } from '../../pages/workday/workday';
 @Component({
   selector: 'branch-details',
   templateUrl: 'branch-details.html'
@@ -31,8 +30,5 @@ export class BranchDetailsComponent implements OnInit {
         lng: this.branch.coordinatesLng
       }
     });
-  }
-  public navigateToWorkday(){
-    this.navCtrl.push(WorkdayPage);
   }
 }

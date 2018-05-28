@@ -10,6 +10,7 @@
     <ion-row *ngFor="let event of events | async">
         <ion-card> 
             <branch-details [event-data]="event" [branch-data]="event.branch"></branch-details>
+            <button (click)="navigateToWorkday()" full ion-button round>            
         </ion-card>
     </ion-row>
 </ion-content>

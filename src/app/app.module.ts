@@ -40,8 +40,7 @@ const firebaseConfig = {
   declarations: [
     MyApp,
     LoginPage,
-    HomePage,
-    WorkdayPage
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -56,14 +55,14 @@ const firebaseConfig = {
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC0gcAwwnMoOl-2HuX00wKb-uXAoUoE8qU'
     }),
-    MapDetailsPageModule   
+    MapDetailsPageModule,
+    WorkdayPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage,
-    WorkdayPage    
+    HomePage
   ],
   providers: [
     StatusBar,
