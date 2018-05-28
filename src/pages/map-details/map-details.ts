@@ -8,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class MapDetailsPage {
   public lat: number = 19.5015841;
   public lng: number = -99.4042516;
-  public zoom = 17; 
+  public zoom = 9; 
   public name: string;
   public mlat;
   constructor(public navCtrl: NavController, public navParams: NavParams) { }

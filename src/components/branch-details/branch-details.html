@@ -8,18 +8,24 @@
     <ion-card-content>
         <ion-card-title>
             {{ branch.name }}
+            <div float-right>
+                <p>
+                    <ion-icon  name="ios-calendar-outline"></ion-icon>  {{ event.eventDateBegin | date: 'shortDate' }}                      
+                </p>
+                <p>
+                    <ion-icon  name="ios-calendar"></ion-icon>  {{ event.eventDateExp | date: 'shortDate' }}                                          
+                </p>
+            </div>
         </ion-card-title>
         <p>
             {{ branch.city }}, {{ branch.state }}
         </p>
-        <p>{{ branch.address1 }}, {{ branch.address2 }}</p>
-        <ion-item>
+        <p> 
+            <ion-icon name="ios-navigate"></ion-icon> {{ branch.address1 }}, {{ branch.address2 }}
+        </p>
+        <!--<ion-item>
             <ion-icon name="ios-calendar-outline" item-start large></ion-icon>
             <h2>Inició el {{ event.eventDateBegin | date: 'shortDate' }}</h2>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="ios-calendar" item-start large></ion-icon>
-            <h2>Termina el {{ event.eventDateExp | date: 'shortDate' }}</h2>
-        </ion-item>
+        </ion-item>-->
     </ion-card-content>
 </div>
