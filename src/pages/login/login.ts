@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup , Validators } from '@angular/forms';
 import { HomePage } from '../home/home';
-
 @IonicPage()
 @Component({
   selector: 'page-login',

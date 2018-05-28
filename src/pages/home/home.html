@@ -8,7 +8,7 @@
   </ion-header>
 <ion-content padding>
     <ion-row *ngFor="let event of events | async">
-        <ion-card> 
+        <ion-card class="transparent-card"> 
             <branch-details [event-data]="event" [branch-data]="event.branch"></branch-details>
             <button (click)="navigateToWorkday()" text-center full ion-button>
                 Registrar jornada

@@ -1,42 +1,44 @@
-<div *ngIf="branch">
-    <ion-fab right top>
-            <button (click)="goToMapBranchLocation()" ion-fab>
-            <ion-icon name="pin"></ion-icon>
-            </button>
-    </ion-fab>
-    <img class="location-image" [src]="branch.image">
-    <ion-card-content>
-        <ion-card-title>
-            {{ branch.name }}
-            <div float-right>
+<div class="wrapper" *ngIf="branch">
+    <div>
+            <ion-fab class="right-top">
+                    <button (click)="goToMapBranchLocation()" ion-fab>
+                    <ion-icon name="pin"></ion-icon>
+                    </button>
+            </ion-fab>
+            <img class="location-image" [src]="branch.image">
+            <ion-card-content>
+                <ion-card-title>
+                    {{ branch.name }}
+                    <div float-right>
+                        <p>
+                            <ion-icon  name="ios-calendar-outline"></ion-icon>  {{ event.eventDateBegin | date: 'shortDate' }}                      
+                        </p>
+                        <p>
+                            <ion-icon  name="ios-calendar"></ion-icon>  {{ event.eventDateExp | date: 'shortDate' }}                                          
+                        </p>
+                    </div>
+                </ion-card-title>
                 <p>
-                    <ion-icon  name="ios-calendar-outline"></ion-icon>  {{ event.eventDateBegin | date: 'shortDate' }}                      
+                    {{ branch.city }}, {{ branch.state }}
                 </p>
-                <p>
-                    <ion-icon  name="ios-calendar"></ion-icon>  {{ event.eventDateExp | date: 'shortDate' }}                                          
+                <hr>
+                <p> 
+                    <ion-icon name="ios-navigate"></ion-icon> {{ branch.address1 }}, {{ branch.address2 }}
                 </p>
-            </div>
-        </ion-card-title>
-        <p>
-            {{ branch.city }}, {{ branch.state }}
-        </p>
-        <hr>
-        <p> 
-            <ion-icon name="ios-navigate"></ion-icon> {{ branch.address1 }}, {{ branch.address2 }}
-        </p>
-        <p> 
-            <ion-icon name="ios-person"></ion-icon> {{ branch.supervisors }} Supervisores            
-            <ion-icon name="ios-people"></ion-icon> {{ branch.promoters }} Promotores
-        </p>
-        <ion-item>
-            <ion-icon name="ios-alarm-outline" item-start large></ion-icon>
-            <h2> <strong>Hora de entrada:</strong>
-                  {{ event.hourWorkdayBegin }}</h2>
-        </ion-item>
-        <ion-item>
-            <ion-icon name="ios-alarm" item-start large></ion-icon>
-            <h2> <strong>Hora de salida:</strong> {{ event.hourWorkdayEnd }}</h2>
-        </ion-item>
-                   
-    </ion-card-content>
+                <p> 
+                    <ion-icon name="ios-person"></ion-icon>   <ion-badge>{{ branch.supervisors }}</ion-badge> Supervisores            
+                    <ion-icon name="ios-people"></ion-icon>  <ion-badge>{{ branch.promoters }}</ion-badge> Promotores
+                </p>
+                <ion-item>
+                    <ion-icon name="ios-alarm-outline" item-start large></ion-icon>
+                    <h2> <strong>Hora de entrada:</strong>
+                          {{ event.hourWorkdayBegin }}</h2>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="ios-alarm" item-start large></ion-icon>
+                    <h2> <strong>Hora de salida:</strong> {{ event.hourWorkdayEnd }}</h2>
+                </ion-item>
+                           
+            </ion-card-content>
+    </div>
 </div>
