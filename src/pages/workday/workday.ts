@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 @IonicPage()
-
 @Component({
   selector: 'page-workday',
   templateUrl: 'workday.html',
@@ -48,10 +47,10 @@ export class WorkdayPage {
   private rad(x): number {
     return x * Math.PI / 180;
   }
-  public checkStartHour(){
+  public checkStartHour(): void {
     console.log("Hola");
   }
-  public checkEndHour(){
+  public checkEndHour(): void{
     console.log("Bai");
   }
 
