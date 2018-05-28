@@ -8,9 +8,8 @@
   </ion-header>
 <ion-content padding>
     <ion-row *ngFor="let event of events | async">
-        <ion-card>
-            
-            <branch-details [branch-data]="event.branch"></branch-details>
+        <ion-card> 
+            <branch-details [event-data]="event" [branch-data]="event.branch"></branch-details>
         </ion-card>
     </ion-row>
 </ion-content>

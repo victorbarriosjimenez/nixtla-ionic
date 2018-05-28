@@ -4,12 +4,14 @@ import { BranchesService } from '../../services/branch.service';
 import { Observable } from 'rxjs/Observable'
 import { NavController } from 'ionic-angular';
 import { MapDetailsPage } from '../../pages/map-details/map-details';
+import { Event } from '../../models/events';
 @Component({
   selector: 'branch-details',
   templateUrl: 'branch-details.html'
 })
 export class BranchDetailsComponent implements OnInit {
-  @Input('branch-data') branchId: string;
+  @Input('branch-data') public branchId: string;
+  @Input('event-data') public event: Event;
   public branch: Branch;
   ngOnInit(){
     this.getBranchData(); 

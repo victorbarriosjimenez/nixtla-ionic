@@ -12,13 +12,14 @@
         <p>
             {{ branch.city }}, {{ branch.state }}
         </p>
+        <p>{{ branch.address1 }}, {{ branch.address2 }}</p>
         <ion-item>
-            <ion-icon name="md-log-in" item-start large></ion-icon>
-            <h2>Museum of Football</h2>
+            <ion-icon name="ios-calendar-outline" item-start large></ion-icon>
+            <h2>Inició el {{ event.eventDateBegin | date: 'shortDate' }}</h2>
         </ion-item>
         <ion-item>
-                <ion-icon name="md-log-out" item-start large></ion-icon>
-                <h2>Museum of Football</h2>
+            <ion-icon name="ios-calendar" item-start large></ion-icon>
+            <h2>Termina el {{ event.eventDateExp | date: 'shortDate' }}</h2>
         </ion-item>
     </ion-card-content>
 </div>
