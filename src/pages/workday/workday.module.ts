@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { IonicPageModule, IonicModule } from 'ionic-angular';
 import { WorkdayPage } from './workday';
 
 @NgModule({
   declarations: [
-    WorkdayPage,
+    WorkdayPage
+  ],
+  entryComponents:[
+    WorkdayPage
   ],
   imports: [
-    IonicPageModule.forChild(WorkdayPage),
+    IonicModule
   ],
 })
 export class WorkdayPageModule {}

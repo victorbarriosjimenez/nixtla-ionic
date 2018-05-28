@@ -24,6 +24,8 @@ import { MapDetailsPage } from '../pages/map-details/map-details';
 import { MapDetailsPageModule } from '../pages/map-details/map-details.module';
 
 import { AgmCoreModule } from '@agm/core';
+import { WorkdayPageModule } from '../pages/workday/workday.module';
+import { WorkdayPage } from '../pages/workday/workday';
 
 
 const firebaseConfig = {
@@ -38,7 +40,8 @@ const firebaseConfig = {
   declarations: [
     MyApp,
     LoginPage,
-    HomePage
+    HomePage,
+    WorkdayPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ const firebaseConfig = {
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage
+    HomePage,
+    WorkdayPage    
   ],
   providers: [
     StatusBar,
