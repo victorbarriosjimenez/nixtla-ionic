@@ -4,7 +4,6 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-    {{ promoter }}
     <div padding>
         <ion-segment [(ngModel)]="workday">
           <ion-segment-button value="regular">
@@ -22,7 +21,7 @@
         <ion-list *ngSwitchCase="'regular'">
                 <ion-item>
                     <ion-label>Registar hora de entrada</ion-label>
-                    <ion-toggle checked="false"></ion-toggle>
+                    <ion-toggle [(ngModel)]="hasCheckedStartHour" (ionChange)="checkStartHour()" checked="false"></ion-toggle>
                 </ion-item>
                 <ion-item>
                   <ion-label>
@@ -31,10 +30,10 @@
                 </ion-item>
                 <ion-item>
                     <ion-label>Hora de salida</ion-label>
-                    <ion-toggle disabled checked="false"></ion-toggle>
+                    <ion-toggle [(ngModel)]="hasCheckedEndHour" (ionChange)="checkEndHour()"></ion-toggle>
                 </ion-item>
                 <ion-item>
-                  <ion-label disabled>
+                  <ion-label>
                       <ion-icon name="ios-information-circle-outline"></ion-icon> La hora de salida es a las 18:00 PM
                   </ion-label>
                 </ion-item>

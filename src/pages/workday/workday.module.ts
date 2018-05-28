@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule, IonicModule } from 'ionic-angular';
 import { WorkdayPage } from './workday';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { WorkdayPage } from './workday';
     WorkdayPage
   ],
   imports: [
-    IonicModule
+    IonicModule,
+    FormsModule
   ],
 })
 export class WorkdayPageModule {}

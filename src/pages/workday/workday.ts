@@ -10,6 +10,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class WorkdayPage {
   workday: string = "regular";
   public isUserLocated: boolean = false;
+  public hasCheckedStartHour = true;
+  public hasCheckedEndHour = true;
   public promoter: string;
   public userLocationLat: number = 0;
   public userLocationLng: number = 0;
@@ -20,8 +22,6 @@ export class WorkdayPage {
   ionViewDidLoad() { 
     this.promoter = this.navParams.get('promoter');
     this.branchLocation = this.navParams.get('coordinates');
-    console.log(this.promoter);
-    console.log(this.branchLocation);
   }
   public getLocation(): void {
     this.geolocation.getCurrentPosition().then(
@@ -48,4 +48,11 @@ export class WorkdayPage {
   private rad(x): number {
     return x * Math.PI / 180;
   }
+  public checkStartHour(){
+    console.log("Hola");
+  }
+  public checkEndHour(){
+    console.log("Bai");
+  }
+
 }
