@@ -26,6 +26,7 @@ import { MapDetailsPageModule } from '../pages/map-details/map-details.module';
 import { AgmCoreModule } from '@agm/core';
 import { WorkdayPageModule } from '../pages/workday/workday.module';
 import { WorkdayPage } from '../pages/workday/workday';
+import { EventsService } from '../services/events.service';
 
 
 const firebaseConfig = {
@@ -68,6 +69,7 @@ const firebaseConfig = {
     StatusBar,
     AngularFireAuth,
     AuthService,
+    EventsService,
     Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -24,7 +24,7 @@ export class AuthService {
 	get authenticated(): boolean {
 		return this.user !== null;
 	}
-	get authIud(): string { 
+	get authUid(): string { 
 		return this.user.uid
 	}
 }
