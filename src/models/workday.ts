@@ -1,5 +1,6 @@
 export class Workday {
     uid?: string;
+    event?: string;
     workDayDate?: Date;
     branch?: string;
     extraHours?: number;
