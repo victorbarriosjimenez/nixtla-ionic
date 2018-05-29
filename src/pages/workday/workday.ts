@@ -53,11 +53,8 @@ export class WorkdayPage {
     return x * Math.PI / 180;
   }
   public checkStartHour(): void {
-    console.log(this.userLocationLat, this.userLocationLng);
-    console.log(this.branchLocation.lat, this.branchLocation.lng);
     let distance = this.compareLocationDistanceFromEvent();
-    console.log(distance);
-    if(distance > 0.00 && distance <= .100 ){
+    if(distance > 0.00 && distance <= .100){
       this.hasCheckedStartHour = true;
       this.prepareStartHourModel(new Date());
     }
