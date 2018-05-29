@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { EventsService } from '../../services/events.service';
 import { Event } from '../../models/events';
 import { AlertController } from 'ionic-angular';
+import { HomePage } from '../home/home';
 @IonicPage()
 @Component({
   selector: 'page-workday',
@@ -65,18 +66,32 @@ export class WorkdayPage {
     return x * Math.PI / 180;
   }
   public checkStartHour(): void {
+    this.getLocation();
     this.compareDistanceLocationFromBranch() ? this.prepareStartHourModel(new Date()) : this.hasCheckedStartHour = false;
   }
   public compareDistanceLocationFromBranch(){
     let distance = this.compareLocationDistanceFromEvent();
+    let fixedDistance = distance.toFixed(2);
     if(distance > 0.00 && distance <= .100){
       return true;
     }
     else { 
+      let alert = this.alertCtrl.create({
+        title: 'Estás muy lejos',
+        subTitle: `Te encuentras a una distancia de ${fixedDistance} kilómetros, acércate más a la sucursal`,
+        buttons: [{
+          text: 'OK',
+          handler: data => {
+            this.navCtrl.push(HomePage);
+          }
+        }]
+      });
+      alert.present();
       return false;
     }
   }
   public prepareEndHourModel(endCheckTime: Date): void {
+    this.endHour = endCheckTime;
     const endWorkDayModel: Workday = {
       uid: this.workDayObject.uid,      
       hasCheckedEndHour: true,
@@ -84,6 +99,7 @@ export class WorkdayPage {
     }
   }
   public checkEndHour() {
+    this.getLocation();
     this.compareDistanceLocationFromBranch() ? this.prepareEndHourModel(new Date()) : this.hasCheckedEndHour = false;
 
   }
