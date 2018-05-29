@@ -21,7 +21,7 @@
         <ion-list *ngSwitchCase="'regular'">
               <ion-item>
                   <ion-label>Registar hora de entrada</ion-label>
-                  <ion-toggle [disabled]="hasCheckedStartHour" [(ngModel)]="hasCheckedStartHour" (ionChange)="checkStartHour()"></ion-toggle>
+                  <ion-toggle [(ngModel)]="hasCheckedStartHour" (ionChange)="checkStartHour()"></ion-toggle>
               </ion-item>
               <ion-item>
                 <ion-label>
@@ -49,4 +49,5 @@
                 <p>Quiero registrar una ausencia</p>
         </ion-list>
       </div>
+      <p> {{ hasCheckedStartHour }}</p>
 </ion-content>

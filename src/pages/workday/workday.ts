@@ -57,19 +57,19 @@ export class WorkdayPage {
     console.log(this.branchLocation.lat, this.branchLocation.lng);
     let distance = this.compareLocationDistanceFromEvent();
     console.log(distance);
-    if(distance > 0.00 && distance <= .150 ){
+    if(distance > 0.00 && distance <= .100 ){
       this.hasCheckedStartHour = true;
       this.prepareStartHourModel(new Date());
     }
-    else if(distance > 0.150 && distance <= .250){
-      this.hasCheckedEndHour = false;
+    else if(distance > 0.100 && distance <= .350){
+      this.hasCheckedStartHour = false;
     }
     else { 
       return;
     }
   }
   public checkEndHour(): void {
-
+    console.log("Zucc");
   }
   prepareStartHourModel(startCheckTime: Date) {
     const startWorkDayModel: Workday = {

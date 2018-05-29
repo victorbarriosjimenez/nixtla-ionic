@@ -49,5 +49,7 @@ export class BranchDetailsComponent implements OnInit {
         );
     }
   }
-   public showWorkdayErr() { }
+  showWorkdayErr(){
+    console.log("Reportado papu");
+  }
 }

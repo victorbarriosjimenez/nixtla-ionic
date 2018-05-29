@@ -17,6 +17,6 @@ export class EventsService {
 	public setNewWorkdayFromStartHour(workday: Workday){
 		let uid = this.afs.createId();
 		workday.uid = uid;
-		return this.workdaysReference.doc(uid).set(workday)
+		return this.workdaysReference.doc(uid).set(workday);
 	}
 }
