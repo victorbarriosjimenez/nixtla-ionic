@@ -9,10 +9,10 @@
           <ion-segment-button value="regular">
             Jornada
           </ion-segment-button>
-          <ion-segment-button value="holiday">
+          <ion-segment-button *ngIf="!hasCheckedStartHour" value="holiday">
             Día Feriado
           </ion-segment-button>
-          <ion-segment-button value="absent">
+          <ion-segment-button *ngIf="!hasCheckedStartHour" value="absent">
             Inasistencia
           </ion-segment-button>
         </ion-segment>
@@ -21,12 +21,16 @@
         <ion-list *ngSwitchCase="'regular'">
               <ion-item>
                   <ion-label>Registar hora de entrada</ion-label>
-                  <ion-toggle [(ngModel)]="hasCheckedStartHour" (ionChange)="checkStartHour()"></ion-toggle>
+                  <ion-toggle [disabled]="hasCheckedStartHour" [(ngModel)]="hasCheckedStartHour" (ionChange)="checkStartHour()"></ion-toggle>
               </ion-item>
               <ion-item>
-                <ion-label>
-                  <ion-icon name="ios-information-circle-outline"></ion-icon> La hora de entrada es a las 8:00 AM
+                <ion-label *ngIf="hasCheckedStartHour; else showRule">
+                  <ion-icon name="ios-alarm-outline"></ion-icon>  {{  startHour | date:'hh:mm'}}
                 </ion-label>
+                <ng-template #showRule>
+                    <ion-icon name="ios-information-circle-outline"></ion-icon> 
+                    La hora de entrada es a las 8:00 AM
+                </ng-template>
               </ion-item>
               <ion-item>
                   <ion-label>Hora de salida</ion-label>
@@ -49,4 +53,5 @@
                 <p>Quiero registrar una ausencia</p>
         </ion-list>
       </div>
+          
 </ion-content>

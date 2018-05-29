@@ -15,6 +15,8 @@ export class WorkdayPage {
   public isUserLocated: boolean = false;
   public hasCheckedStartHour;
   public hasCheckedEndHour;
+  public startHour: any;
+  public endHour: any;
   public hasFoundExistentWorkday: boolean; 
   public promoter: string;
   public workDayObject: any;
@@ -93,7 +95,8 @@ export class WorkdayPage {
         .subscribe(workdayEvent =>{
           if(workdayEvent) { 
             this.workDayObject = workdayEvent[0],
-            this.hasCheckedStartHour = this.workDayObject.hasCheckedStartHour
+            this.hasCheckedStartHour = this.workDayObject.hasCheckedStartHour,
+            this.startHour = this.workDayObject.startCheckTime
           }
           else {
             this.hasCheckedStartHour = false
