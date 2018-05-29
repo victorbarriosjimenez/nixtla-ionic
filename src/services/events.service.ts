@@ -19,4 +19,11 @@ export class EventsService {
 		workday.uid = uid;
 		return this.workdaysReference.doc(uid).set(workday);
 	}
+	public searchWorkdayData(queryPromoter: string,queryEvent: string,todayEvent: Date){
+	 return this.afs.collection('workdays', ref => ref.where('event','==',queryEvent)
+													  .where('workDayDate','==',todayEvent)
+													  .where('status','==',true)
+													  .limit(1))
+													  .valueChanges();
+	}
 }

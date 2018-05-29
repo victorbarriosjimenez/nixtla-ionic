@@ -7,6 +7,7 @@ import { MapDetailsPage } from '../../pages/map-details/map-details';
 import { Event } from '../../models/events';
 import { WorkdayPage } from '../../pages/workday/workday';
 import * as moment from 'moment';
+import { EventsService } from '../../services/events.service';
 @Component({
   selector: 'branch-details',
   templateUrl: 'branch-details.html'
@@ -14,12 +15,17 @@ import * as moment from 'moment';
 export class BranchDetailsComponent implements OnInit {
   @Input('branch-data') public branchId: string;
   @Input('event-data') public event: Event;
+  public hasOpenedWorkday: boolean = false;
   public branch: Branch;
+  public workDay: any;
+  public today = moment().startOf('day').toDate();
   ngOnInit(){
-    this.getBranchData(); 
+    this.getBranchData();
+    this.getWorkdayEvent(); 
   }
   constructor(private branchService: BranchesService,
-              public navCtrl: NavController) { }
+              public navCtrl: NavController,
+              private eventsService: EventsService) { }
   public getBranchData(){
     this.branchService.getBranchByUid(this.branchId)
         .subscribe(branch => this.branch = branch);
@@ -51,5 +57,11 @@ export class BranchDetailsComponent implements OnInit {
   }
   showWorkdayErr(){
     console.log("Reportado papu");
+  }
+  public getWorkdayEvent() {
+    this.eventsService.searchWorkdayData(this.event.promoter,this.event.uid,this.today)
+        .subscribe(workd => this.workDay = this.workDay,
+        err => console.log(err),
+        () => console.log("peeeeerroo"));
   }
 }

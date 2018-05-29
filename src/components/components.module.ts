@@ -3,23 +3,22 @@ import { CommonModule } from '@angular/common'
 import { BranchDetailsComponent } from './branch-details/branch-details';
 import { BranchesService } from '../services/branch.service';
 import { IonicModule } from 'ionic-angular';
-import { WordkdayButtonComponent } from './wordkday-button/wordkday-button.component';
+import { EventsService } from '../services/events.service';
 
 @NgModule({
 	declarations: [
-		BranchDetailsComponent,
-		WordkdayButtonComponent
+		BranchDetailsComponent
 ],
 	imports: [
 		CommonModule,
 		IonicModule
 	],
 	exports: [
-		BranchDetailsComponent,
-		WordkdayButtonComponent
+		BranchDetailsComponent
 	],
 	providers: [
-		BranchesService		
+		BranchesService,
+		EventsService
 	]
 })
 export class ComponentsModule {}
