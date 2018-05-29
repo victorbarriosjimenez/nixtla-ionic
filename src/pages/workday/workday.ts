@@ -5,6 +5,7 @@ import { Workday } from '../../models/workday';
 import * as moment from 'moment';
 import { EventsService } from '../../services/events.service';
 import { Event } from '../../models/events';
+import { AlertController } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-workday',
@@ -28,7 +29,8 @@ export class WorkdayPage {
   constructor(public navCtrl: NavController,
               public geolocation: Geolocation,
               public navParams: NavParams,
-              public eventsService: EventsService) { }
+              public eventsService: EventsService,
+              public alertCtrl: AlertController) { }
   ionViewDidLoad() { 
     this.promoter = this.navParams.get('promoter');
     this.branchLocation = this.navParams.get('coordinates');
@@ -63,25 +65,30 @@ export class WorkdayPage {
     return x * Math.PI / 180;
   }
   public checkStartHour(): void {
+    this.compareDistanceLocationFromBranch() ? this.prepareStartHourModel(new Date()) : this.hasCheckedStartHour = false;
+  }
+  public compareDistanceLocationFromBranch(){
     let distance = this.compareLocationDistanceFromEvent();
     if(distance > 0.00 && distance <= .100){
-      this.hasCheckedStartHour = true;
-      this.prepareStartHourModel(new Date());
-    }
-    else if(distance > 0.100 && distance <= .350){
-      this.hasCheckedStartHour = false;
+      return true;
     }
     else { 
-      return;
+      return false;
     }
   }
-  public prepareEndHour(endCheckTime: Date): void {
+  public prepareEndHourModel(endCheckTime: Date): void {
     const endWorkDayModel: Workday = {
+      uid: this.workDayObject.uid,      
       hasCheckedEndHour: true,
-      hasBeenAbsent: false
+      endHourCheckTime: endCheckTime
     }
   }
-  prepareStartHourModel(startCheckTime: Date) {
+  public checkEndHour() {
+    this.compareDistanceLocationFromBranch() ? this.prepareEndHourModel(new Date()) : this.hasCheckedEndHour = false;
+
+  }
+  public prepareStartHourModel(startCheckTime: Date) {
+    this.startHour = startCheckTime
     const startWorkDayModel: Workday = {
         workDayDate: moment().startOf('day').toDate(),
         promoter: this.promoter,
@@ -89,9 +96,7 @@ export class WorkdayPage {
         startCheckTime: startCheckTime 
     }
     this.eventsService.setNewWorkdayFromStartHour(startWorkDayModel)
-        .then((succ)=>{
-          console.log(succ);
-        });
+        .then((succ)=>  { console.log(succ); });
   }
   public getWorkdayEvent() {
     this.eventsService.searchWorkdayData(this.promoter,this.today)
@@ -100,9 +105,6 @@ export class WorkdayPage {
             this.workDayObject = workdayEvent[0],
             this.hasCheckedStartHour = this.workDayObject.hasCheckedStartHour,
             this.startHour = this.workDayObject.startCheckTime
-          }
-          else {
-            this.hasCheckedStartHour = false
           }
         });
   }
