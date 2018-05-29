@@ -13,8 +13,8 @@ import { Event } from '../../models/events';
 export class WorkdayPage {
   workday: string = "regular";
   public isUserLocated: boolean = false;
-  public hasCheckedStartHour;
-  public hasCheckedEndHour;
+  public hasCheckedStartHour = false;
+  public hasCheckedEndHour = false;
   public startHour: any;
   public endHour: any;
   public hasFoundExistentWorkday: boolean; 
@@ -75,8 +75,11 @@ export class WorkdayPage {
       return;
     }
   }
-  public checkEndHour(): void {
-    console.log("Zucc");
+  public prepareEndHour(endCheckTime: Date): void {
+    const endWorkDayModel: Workday = {
+      hasCheckedEndHour: true,
+      hasBeenAbsent: false
+    }
   }
   prepareStartHourModel(startCheckTime: Date) {
     const startWorkDayModel: Workday = {
