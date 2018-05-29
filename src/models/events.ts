@@ -1,6 +1,6 @@
 export class Event { 
     uid?: string;
-    branch: string;
+    branch?: string;
     promoter?: string;
     eventDateBegin?: Date;
     eventDateExp?: Date;

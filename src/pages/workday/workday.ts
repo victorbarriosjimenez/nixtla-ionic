@@ -4,6 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Workday } from '../../models/workday';
 import * as moment from 'moment';
 import { EventsService } from '../../services/events.service';
+import { Event } from '../../models/events';
 @IonicPage()
 @Component({
   selector: 'page-workday',
@@ -14,7 +15,11 @@ export class WorkdayPage {
   public isUserLocated: boolean = false;
   public hasCheckedStartHour;
   public hasCheckedEndHour;
+  public hasFoundExistentWorkday: boolean; 
   public promoter: string;
+  public workDayObject: any;
+  public branch: string;
+  public today: Date;
   public userLocationLat: number = 0;
   public userLocationLng: number = 0;
   public branchLocation;
@@ -25,6 +30,9 @@ export class WorkdayPage {
   ionViewDidLoad() { 
     this.promoter = this.navParams.get('promoter');
     this.branchLocation = this.navParams.get('coordinates');
+    this.today = this.navParams.get('today');
+    this.branch = this.navParams.get('branch');
+    this.getWorkdayEvent();  
     this.getLocation();
   }
   public getLocation(): void {
@@ -78,6 +86,18 @@ export class WorkdayPage {
     this.eventsService.setNewWorkdayFromStartHour(startWorkDayModel)
         .then((succ)=>{
           console.log(succ);
+        });
+  }
+  public getWorkdayEvent() {
+    this.eventsService.searchWorkdayData(this.promoter,this.today)
+        .subscribe(workdayEvent =>{
+          if(workdayEvent) { 
+            this.workDayObject = workdayEvent[0],
+            this.hasCheckedStartHour = this.workDayObject.hasCheckedStartHour
+          }
+          else {
+            this.hasCheckedStartHour = false
+          }
         });
   }
 }

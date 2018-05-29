@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AuthService } from './auth.service';
 import { Workday } from '../models/workday';
+import { query } from '@angular/core/src/animation/dsl';
 @Injectable()
 export class EventsService {
 	public workdaysReference: AngularFirestoreCollection<Workday> = this.afs.collection('workdays');
@@ -19,10 +20,10 @@ export class EventsService {
 		workday.uid = uid;
 		return this.workdaysReference.doc(uid).set(workday);
 	}
-	public searchWorkdayData(queryPromoter: string,queryEvent: string,todayEvent: Date){
-	 return this.afs.collection('workdays', ref => ref.where('event','==',queryEvent)
+	public searchWorkdayData(queryPromoter: string ,todayEvent: Date){
+		return this.afs.collection('workdays', ref => ref.where('promoter','==',queryPromoter)
 													  .where('workDayDate','==',todayEvent)
-													  .where('status','==',true)
+													  .where('hasCheckedStartHour','==',true)
 													  .limit(1))
 													  .valueChanges();
 	}

@@ -21,14 +21,15 @@ export class BranchDetailsComponent implements OnInit {
   public today = moment().startOf('day').toDate();
   ngOnInit(){
     this.getBranchData();
-    this.getWorkdayEvent(); 
   }
   constructor(private branchService: BranchesService,
               public navCtrl: NavController,
               private eventsService: EventsService) { }
   public getBranchData(){
     this.branchService.getBranchByUid(this.branchId)
-        .subscribe(branch => this.branch = branch);
+        .subscribe(branch => {
+          this.branch = branch
+        });
   }
   public goToMapBranchLocation(){
      this.navCtrl.push(MapDetailsPage,
@@ -41,12 +42,14 @@ export class BranchDetailsComponent implements OnInit {
   }
   public navigateToWorkday() {
     let today = new Date() >= this.event.eventDateBegin && new Date() <= this.event.eventDateExp && this.event.status == true ? new Date() : this.showWorkdayErr();
-    let todayStartHour = moment().startOf('day').toDate()
+    let todayStartHour = moment().startOf('day').toDate();
     let todayEndHour = moment().endOf('day').toDate();  
     if(today >= todayStartHour && todayEndHour >= today) {
         this.navCtrl.push(WorkdayPage,
           {
             promoter: this.event.promoter,
+            today: moment().startOf('day').toDate(),
+            branch: this.event.branch,
             coordinates: {
               lat: this.branch.coordinatesLat,
               lng: this.branch.coordinatesLng
@@ -58,10 +61,5 @@ export class BranchDetailsComponent implements OnInit {
   showWorkdayErr(){
     console.log("Reportado papu");
   }
-  public getWorkdayEvent() {
-    this.eventsService.searchWorkdayData(this.event.promoter,this.event.uid,this.today)
-        .subscribe(workd => this.workDay = this.workDay,
-        err => console.log(err),
-        () => console.log("peeeeerroo"));
-  }
+  
 }
