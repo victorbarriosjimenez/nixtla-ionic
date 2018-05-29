@@ -8,8 +8,15 @@ import { Event } from '../models/events';
 import { Observable } from 'rxjs/Observable'; 
 import 'rxjs/add/operator/map';
 import { AuthService } from './auth.service';
+import { Workday } from '../models/workday';
 @Injectable()
 export class EventsService {
+	public workdaysReference: AngularFirestoreCollection<Workday> = this.afs.collection('workdays');
 	constructor(private afs: AngularFirestore,
 				private auth: AuthService) { }
+	public setNewWorkdayFromStartHour(workday: Workday){
+		let uid = this.afs.createId();
+		workday.uid = uid;
+		return this.workdaysReference.doc(uid).set(workday)
+	}
 }

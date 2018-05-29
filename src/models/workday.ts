@@ -1,4 +1,5 @@
 export class Workday {
+    uid?: string;
     workDayDate?: Date;
     branch?: string;
     extraHours?: number;
@@ -10,10 +11,8 @@ export class Workday {
     isDayOff?: boolean;
     startCheckTime?: any;
     endHourCheckTime?: any;
-    promoterLocationLat?: number;
-    promoterLocationLng?: number;
     hasReport?: boolean;
     reportuid?: string;
-    hasBeenAbsent: boolean;
-    absentyReport: string;
+    hasBeenAbsent?: boolean;
+    absentyReport?: string;
 }
