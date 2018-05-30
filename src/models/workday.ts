@@ -1,19 +1,19 @@
 export class Workday {
-    uid?: string;
-    event?: string;
-    workDayDate?: Date;
-    branch?: string;
-    extraHours?: number;
-    promoter?: string;
-    hasAfterDelay?: any;
-    afterDelayTime?: any;
-    hasCheckedStartHour?: boolean;
-    hasCheckedEndHour?: boolean;
-    isDayOff?: boolean;
-    startCheckTime?: any;
-    endHourCheckTime?: any;
-    hasReport?: boolean;
-    reportuid?: string;
-    hasBeenAbsent?: boolean;
-    absentyReport?: string;
+    uid?: string; // Id de la jorndada
+    event?: string; // Id del evento 
+    workDayDate?: Date; // Fecha de la jornada
+    branch?: string;    // Id de la sucursal
+    extraHours?: number; // horas extra
+    promoter?: string; // Id promotor
+    hasAfterDelay?: boolean; // Registro booleano de retardo 
+    afterDelayTime?: any; // Tiempo de retardo
+    hasCheckedStartHour?: boolean; // Chequeo de inicio
+    hasCheckedEndHour?: boolean; // Chequeo de fin 
+    isDayOff?: boolean; // Indicador de dia libre
+    startCheckTime?: any; //Hora de llegada
+    endHourCheckTime?: any; //Hora de salida
+    hasReport?: boolean; // Booleano de reporte 
+    reportuid?: string; // Id del reporte 
+    hasBeenAbsent?: boolean; // Registro de inasistencia 
+    absentyReport?: string; // Id del reporte de inasistencia
 }
