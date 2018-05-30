@@ -82,7 +82,7 @@ export class WorkdayPage {
         buttons: [{
           text: 'OK',
           handler: data => {
-            this.navCtrl.push(HomePage);
+            this.navCtrl.pop();
           }
         }]
       });
@@ -101,12 +101,11 @@ export class WorkdayPage {
   public checkEndHour() {
     this.getLocation();
     this.compareDistanceLocationFromBranch() ? this.prepareEndHourModel(new Date()) : this.hasCheckedEndHour = false;
-
   }
   public prepareStartHourModel(startCheckTime: Date) {
     this.startHour = startCheckTime
     const startWorkDayModel: Workday = {
-        workDayDate: moment().startOf('day').toDate(),
+        workDayDate:   moment().startOf('day').toDate(),
         promoter: this.promoter,
         hasCheckedStartHour: true,
         startCheckTime: startCheckTime 

@@ -34,11 +34,17 @@
               </ion-item>
               <ion-item>
                   <ion-label>Hora de salida</ion-label>
-                  <ion-toggle [(ngModel)]="hasCheckedEndHour" (ionChange)="checkEndHour()"></ion-toggle>
+                  <ion-toggle [disabled]="hasCheckedEndHour" [(ngModel)]="hasCheckedEndHour" (ionChange)="checkEndHour()"></ion-toggle>
               </ion-item>
               <ion-item>
                 <ion-label>
-                    <ion-icon name="ios-information-circle-outline"></ion-icon> La hora de salida es a las 18:00 PM
+                  <ion-label *ngIf="hasCheckedEndHour; else showEndHour">
+                    <ion-icon name="ios-alarm-outline"></ion-icon>  {{  endHour | date:'hh:mm'}}
+                  </ion-label>
+                  <ng-template #showEndHour>
+                      <ion-icon name="ios-information-circle-outline"></ion-icon> 
+                      La hora de entrada es a las 8:00 AM
+                  </ng-template>
                 </ion-label>
               </ion-item>
               <button disabled color="primary" text-center full ion-button>
