@@ -97,6 +97,8 @@ export class WorkdayPage {
       hasCheckedEndHour: true,
       endHourCheckTime: endCheckTime
     }
+    this.eventsService.completeWorkDayFromEndHour(endWorkDayModel)
+        .then(succ => console.log(succ));
   }
   public checkEndHour() {
     this.getLocation();

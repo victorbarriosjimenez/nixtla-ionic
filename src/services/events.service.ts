@@ -20,6 +20,11 @@ export class EventsService {
 		workday.uid = uid;
 		return this.workdaysReference.doc(uid).set(workday);
 	}
+	public completeWorkDayFromEndHour(workday: Workday) {
+		return this.workdaysReference
+				   .doc(workday.uid)
+				   .update(workday);
+	}
 	public searchWorkdayData(queryPromoter: string ,todayEvent: Date){
 		return this.afs.collection('workdays', ref => ref.where('promoter','==',queryPromoter)
 													  .where('workDayDate','==',todayEvent)
