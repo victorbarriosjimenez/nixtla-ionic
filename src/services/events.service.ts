@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 import { Workday } from '../models/workday';
 import { query } from '@angular/core/src/animation/dsl';
 import { Branch } from '../models/branch';
+import * as moment from 'moment';
 @Injectable()
 export class EventsService {
 	public workdaysReference: AngularFirestoreCollection<Workday> = this.afs.collection('workdays');
@@ -44,13 +45,16 @@ export class EventsService {
 													  .valueChanges();
 	}
 	public setNewEventCalendar(workday: Workday){
+		let startHour = moment(workday.startCheckTime).format('hh:mm A');
+		let endHour = moment(workday.endHourCheckTime).format('hh:mm A');
 	    this.getBranchData(workday.branch)
 			.subscribe((branch: Branch) => {
 				this.branch = branch.name
 				let calendarEventModel = { 
+					promoter: workday.promoter,
 					start: workday.startCheckTime,
 					end: workday.endHourCheckTime,
-					title: this.branch
+					title: `${this.branch} (${startHour} - ${endHour})`
 				}
 				this.calendarEventsRef.add(calendarEventModel);
 			});

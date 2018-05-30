@@ -20,32 +20,24 @@
     <div [ngSwitch]="workday">
         <ion-list *ngSwitchCase="'regular'">
               <ion-item>
-                  <ion-label>Registar hora de entrada</ion-label>
-                  <ion-toggle [disabled]="hasCheckedStartHour" [(ngModel)]="hasCheckedStartHour" (ionChange)="checkStartHour()"></ion-toggle>
-              </ion-item>
-              <ion-item>
                 <ion-label *ngIf="hasCheckedStartHour; else showRule">
                   <ion-icon name="ios-alarm-outline"></ion-icon>  {{  startHour | date:'hh:mm'}}
                 </ion-label>
                 <ng-template #showRule>
-                    <ion-icon name="ios-information-circle-outline"></ion-icon>   La hora de entrada es a las 8:00 AM
+                    <ion-icon name="ios-information-circle-outline"></ion-icon> Registrar hora de entrada
                 </ng-template>
+                  <ion-toggle [disabled]="hasCheckedStartHour" [(ngModel)]="hasCheckedStartHour" (ionChange)="checkStartHour()"></ion-toggle>
               </ion-item>
               <ion-item>
-                  <ion-label>Hora de salida</ion-label>
+                <ion-label *ngIf="hasCheckedEndHour; else showEndHour">
+                  <ion-icon name="ios-alarm-outline"></ion-icon>  {{  endHour | date:'hh:mm' }}
+                </ion-label>
+                <ng-template #showEndHour>
+                    <ion-icon name="ios-information-circle-outline"></ion-icon> 
+                     Registrar hora de salida
+                </ng-template>
                   <ion-toggle [disabled]="hasCheckedEndHour" [(ngModel)]="hasCheckedEndHour" (ionChange)="checkEndHour()"></ion-toggle>
               </ion-item>
-              <ion-item>
-                <ion-label>
-                  <ion-label *ngIf="hasCheckedEndHour; else showEndHour">
-                    <ion-icon name="ios-alarm-outline"></ion-icon>  {{  endHour | date:'hh:mm' }}
-                  </ion-label>
-                  <ng-template #showEndHour>
-                      <ion-icon name="ios-information-circle-outline"></ion-icon> 
-                      La hora de entrada es a las 8:00 AM
-                  </ng-template>
-                </ion-label>
-              </ion-item>  
         </ion-list>
         <ion-list *ngSwitchCase="'holiday'">
                 <p> <strong> Días feriados </strong></p>
