@@ -121,7 +121,9 @@ export class WorkdayPage {
           if(workdayEvent) { 
             this.workDayObject = workdayEvent[0],
             this.hasCheckedStartHour = this.workDayObject.hasCheckedStartHour,
-            this.startHour = this.workDayObject.startCheckTime
+            this.hasCheckedEndHour = this.workDayObject.hasCheckedEndHour,
+            this.startHour = this.workDayObject.startCheckTime,
+            this.endHour = this.workDayObject.endHourCheckTime
           }
         });
   }

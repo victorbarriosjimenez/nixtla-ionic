@@ -39,7 +39,7 @@
               <ion-item>
                 <ion-label>
                   <ion-label *ngIf="hasCheckedEndHour; else showEndHour">
-                    <ion-icon name="ios-alarm-outline"></ion-icon>  {{  endHour | date:'hh:mm'}}
+                    <ion-icon name="ios-alarm-outline"></ion-icon>  {{  endHour | date:'hh:mm' }}
                   </ion-label>
                   <ng-template #showEndHour>
                       <ion-icon name="ios-information-circle-outline"></ion-icon> 
