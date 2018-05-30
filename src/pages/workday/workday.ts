@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Workday } from '../../models/workday';
 import * as moment from 'moment';
@@ -31,12 +31,14 @@ export class WorkdayPage {
               public geolocation: Geolocation,
               public navParams: NavParams,
               public eventsService: EventsService,
-              public alertCtrl: AlertController) { }
+              public alertCtrl: AlertController,
+              public loadingCtrl: LoadingController ) { }
   ionViewDidLoad() { 
     this.promoter = this.navParams.get('promoter');
     this.branchLocation = this.navParams.get('coordinates');
     this.today = this.navParams.get('today');
     this.branch = this.navParams.get('branch');
+    this.showLoadingAlert();
     this.getWorkdayEvent();  
     this.getLocation();
   }
@@ -134,5 +136,13 @@ export class WorkdayPage {
             this.hasCheckedEndHour = false
           }
         });
+  }
+  showLoadingAlert(){
+    let loader = this.loadingCtrl.create({
+      content: "Espere, por favor...",
+      spinner: 'crescent',
+      duration: 200
+    });
+    loader.present();
   }
 }

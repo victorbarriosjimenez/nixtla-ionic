@@ -24,7 +24,7 @@
                   <ion-icon name="ios-alarm-outline"></ion-icon>  {{  startHour | date:'hh:mm'}}
                 </ion-label>
                 <ng-template #showRule>
-                    <ion-icon name="ios-information-circle-outline"></ion-icon> Registrar hora de entrada
+                   Registrar hora de entrada
                 </ng-template>
                   <ion-toggle [disabled]="hasCheckedStartHour" [(ngModel)]="hasCheckedStartHour" (ionChange)="checkStartHour()"></ion-toggle>
               </ion-item>
@@ -33,8 +33,7 @@
                   <ion-icon name="ios-alarm"></ion-icon>  {{  endHour | date:'hh:mm' }}
                 </ion-label>
                 <ng-template #showEndHour>
-                    <ion-icon name="ios-information-circle-outline"></ion-icon> 
-                     Registrar hora de salida
+                   Registrar hora de salida
                 </ng-template>
                   <ion-toggle [disabled]="hasCheckedEndHour" [(ngModel)]="hasCheckedEndHour" (ionChange)="checkEndHour()"></ion-toggle>
               </ion-item>
