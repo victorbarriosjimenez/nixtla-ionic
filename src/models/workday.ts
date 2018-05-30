@@ -1,3 +1,4 @@
+// Workday representa una jornada trabajada por un promotor
 export class Workday {
     uid?: string; // Id de la jorndada
     event?: string; // Id del evento 
