@@ -22,8 +22,11 @@ export class EventsService {
 	}
 	public completeWorkDayFromEndHour(workday: Workday) {
 		return this.workdaysReference
-				   .doc(workday.uid)
-				   .update(workday);
+				.doc(workday.uid)
+				.update(workday)
+				.then(succ =>{
+					this.setNewEventCalendar(workday);
+				});
 	}
 	public searchWorkdayData(queryPromoter: string ,todayEvent: Date){
 		return this.afs.collection('workdays', ref => ref.where('promoter','==',queryPromoter)
@@ -31,5 +34,10 @@ export class EventsService {
 													  .where('hasCheckedStartHour','==',true)
 													  .limit(1))
 													  .valueChanges();
+	}
+	public setNewEventCalendar(workday: Workday){
+		const calendarEventModel = { 
+			
+		}
 	}
 }

@@ -95,10 +95,13 @@ export class WorkdayPage {
     const endWorkDayModel: Workday = {
       uid: this.workDayObject.uid,      
       hasCheckedEndHour: true,
-      endHourCheckTime: endCheckTime
+      endHourCheckTime: endCheckTime,
+      workDayDate:   moment().startOf('day').toDate(),
+      promoter: this.promoter,
+      hasCheckedStartHour: true,
+      startCheckTime: this.workDayObject.startCheckTime
     }
-    this.eventsService.completeWorkDayFromEndHour(endWorkDayModel)
-        .then(succ => console.log(succ));
+    this.eventsService.completeWorkDayFromEndHour(endWorkDayModel);
   }
   public checkEndHour() {
     this.getLocation();
@@ -124,6 +127,10 @@ export class WorkdayPage {
             this.hasCheckedEndHour = this.workDayObject.hasCheckedEndHour,
             this.startHour = this.workDayObject.startCheckTime,
             this.endHour = this.workDayObject.endHourCheckTime
+          }
+          else if(!this.workDayObject){ 
+            this.hasCheckedStartHour = false;
+            this.hasCheckedEndHour = false
           }
         });
   }
