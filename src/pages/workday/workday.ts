@@ -72,7 +72,7 @@ export class WorkdayPage {
   public compareDistanceLocationFromBranch(){
     let distance = this.compareLocationDistanceFromEvent();
     let fixedDistance = distance.toFixed(2);
-    if(distance > 0.00 && distance <= .100){
+    if(distance > 0.00 && distance <= .300){
       return true;
     }
     else { 
@@ -94,6 +94,7 @@ export class WorkdayPage {
     this.endHour = endCheckTime;
     const endWorkDayModel: Workday = {
       uid: this.workDayObject.uid,      
+      branch: this.branch,
       hasCheckedEndHour: true,
       endHourCheckTime: endCheckTime,
       workDayDate:   moment().startOf('day').toDate(),
