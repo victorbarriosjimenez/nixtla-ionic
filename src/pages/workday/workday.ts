@@ -15,8 +15,8 @@ import { HomePage } from '../home/home';
 export class WorkdayPage {
   workday: string = "regular";
   public isUserLocated: boolean = false;
-  public hasCheckedStartHour = false;
-  public hasCheckedEndHour = false;
+  public hasCheckedStartHour;
+  public hasCheckedEndHour;
   public startHour: any;
   public endHour: any;
   public hasFoundExistentWorkday: boolean; 
@@ -120,15 +120,15 @@ export class WorkdayPage {
   }
   public getWorkdayEvent() {
     this.eventsService.searchWorkdayData(this.promoter,this.today)
-        .subscribe(workdayEvent =>{
-          if(workdayEvent) { 
+        .subscribe(workdayEvent => {
+          if(workdayEvent.length == 1) { 
             this.workDayObject = workdayEvent[0],
             this.hasCheckedStartHour = this.workDayObject.hasCheckedStartHour,
             this.hasCheckedEndHour = this.workDayObject.hasCheckedEndHour,
             this.startHour = this.workDayObject.startCheckTime,
             this.endHour = this.workDayObject.endHourCheckTime
           }
-          else if(!this.workDayObject){ 
+          else { 
             this.hasCheckedStartHour = false;
             this.hasCheckedEndHour = false
           }
