@@ -17,4 +17,5 @@ export class Workday {
     reportuid?: string; // Id del reporte 
     hasBeenAbsent?: boolean; // Registro de inasistencia 
     absentyReport?: string; // Id del reporte de inasistencia
+    isWorkdayCompleted?: boolean; // Jornada completada 
 }
